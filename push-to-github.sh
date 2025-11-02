@@ -19,7 +19,7 @@ then
 fi
 
 # Replace these with your GitHub username and repository name
-GITHUB_USERNAME="YOUR_USERNAME"
+GITHUB_USERNAME="selwynmoses1"
 REPO_NAME="contentstack-website-replica"
 
 echo "Setting up remote and pushing..."
