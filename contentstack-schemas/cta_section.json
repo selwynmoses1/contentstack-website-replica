@@ -1,0 +1,114 @@
+{
+  "title": "CTA Section",
+  "uid": "cta_section",
+  "schema": [
+    {
+      "display_name": "Section Title",
+      "uid": "section_title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Description",
+      "uid": "description",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Primary CTA Text",
+      "uid": "primary_cta_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Primary CTA Link",
+      "uid": "primary_cta_link",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Secondary CTA Text",
+      "uid": "secondary_cta_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Secondary CTA Link",
+      "uid": "secondary_cta_link",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Background Style",
+      "uid": "background_style",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": "gradient"
+    },
+    {
+      "display_name": "Section Location",
+      "uid": "section_location",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": "home"
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": false,
+    "title": "section_title",
+    "sub_title": [],
+    "url_pattern": null
+  }
+}

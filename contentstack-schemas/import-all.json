@@ -1,0 +1,65 @@
+{
+  "content_types": [
+    {
+      "content_type": {
+        "title": "Top Banner",
+        "uid": "top_banner"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Hero Slide",
+        "uid": "hero_slide"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Company Logo",
+        "uid": "company_logo"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Platform Section",
+        "uid": "platform_section"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Feature",
+        "uid": "feature"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Customer Story",
+        "uid": "customer_story"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Insight",
+        "uid": "insight"
+      }
+    },
+    {
+      "content_type": {
+        "title": "CTA Section",
+        "uid": "cta_section"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Platform Feature",
+        "uid": "platform_feature"
+      }
+    },
+    {
+      "content_type": {
+        "title": "Role",
+        "uid": "role"
+      }
+    }
+  ]
+}
+

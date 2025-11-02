@@ -1,0 +1,69 @@
+{
+  "title": "Top Banner",
+  "uid": "top_banner",
+  "schema": [
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Link URL",
+      "uid": "link_url",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Is Active",
+      "uid": "is_active",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "boolean",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": true
+    },
+    {
+      "display_name": "Publish Date",
+      "uid": "publish_date",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "isodate",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Expiry Date",
+      "uid": "expiry_date",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "isodate",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": true,
+    "title": "title",
+    "sub_title": [],
+    "url_pattern": null
+  }
+}

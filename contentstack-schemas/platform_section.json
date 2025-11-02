@@ -1,0 +1,92 @@
+{
+  "title": "Platform Section",
+  "uid": "platform_section",
+  "schema": [
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Badge Text",
+      "uid": "badge_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": "Our platform"
+    },
+    {
+      "display_name": "Description",
+      "uid": "description",
+      "field_metadata": {
+        "_default": true,
+        "allow_json_rte": true
+      },
+      "data_type": "json",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Primary CTA Text",
+      "uid": "primary_cta_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Primary CTA Link",
+      "uid": "primary_cta_link",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Secondary CTA Text",
+      "uid": "secondary_cta_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Secondary CTA Link",
+      "uid": "secondary_cta_link",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": true,
+    "title": "title",
+    "sub_title": [],
+    "url_pattern": null
+  }
+}

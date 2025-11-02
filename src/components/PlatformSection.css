@@ -1,0 +1,85 @@
+.platform-section {
+  padding: 100px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.platform-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.platform-content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.platform-badge {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.platform-title {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 48px;
+}
+
+.platform-title strong {
+  font-weight: 700;
+}
+
+.platform-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.platform-cta .btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.platform-cta .btn-primary:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.platform-cta .btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.platform-cta .btn-secondary:hover {
+  background: white;
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  .platform-section {
+    padding: 60px 16px;
+  }
+
+  .platform-title {
+    font-size: 24px;
+  }
+
+  .platform-cta {
+    flex-direction: column;
+  }
+
+  .platform-cta .btn-primary,
+  .platform-cta .btn-secondary {
+    width: 100%;
+  }
+}
+

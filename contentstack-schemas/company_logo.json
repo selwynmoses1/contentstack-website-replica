@@ -1,0 +1,70 @@
+{
+  "title": "Company Logo",
+  "uid": "company_logo",
+  "schema": [
+    {
+      "display_name": "Company Name",
+      "uid": "company_name",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Logo",
+      "uid": "logo",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "file",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Company URL",
+      "uid": "company_url",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Display Order",
+      "uid": "display_order",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "number",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": 0
+    },
+    {
+      "display_name": "Is Active",
+      "uid": "is_active",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "boolean",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": true
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": false,
+    "title": "company_name",
+    "sub_title": [],
+    "url_pattern": null
+  }
+}

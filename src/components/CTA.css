@@ -1,0 +1,103 @@
+.cta-section {
+  padding: 100px 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.cta-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px;
+}
+
+.cta-text {
+  font-size: 24px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.cta-text strong {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-main {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.cta-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-description {
+  font-size: 20px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.cta-main .btn-primary {
+  font-size: 16px;
+  padding: 14px 32px;
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 16px;
+  }
+
+  .cta-content {
+    margin-bottom: 40px;
+  }
+
+  .cta-text {
+    font-size: 18px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-buttons .btn-primary,
+  .cta-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .cta-main {
+    padding: 40px 24px;
+  }
+
+  .cta-title {
+    font-size: 36px;
+  }
+
+  .cta-description {
+    font-size: 16px;
+  }
+}
+

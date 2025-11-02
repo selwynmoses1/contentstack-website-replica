@@ -1,0 +1,159 @@
+{
+  "title": "Customer Story",
+  "uid": "customer_story",
+  "schema": [
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Company Name",
+      "uid": "company_name",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Description",
+      "uid": "description",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Featured Image",
+      "uid": "featured_image",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "file",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Metric Value",
+      "uid": "metric_value",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Metric Label",
+      "uid": "metric_label",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Case Study URL",
+      "uid": "case_study_url",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Full Story Content",
+      "uid": "full_story_content",
+      "field_metadata": {
+        "_default": true,
+        "allow_json_rte": true
+      },
+      "data_type": "json",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Testimonial Quote",
+      "uid": "testimonial_quote",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Testimonial Author",
+      "uid": "testimonial_author",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Testimonial Author Title",
+      "uid": "testimonial_author_title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Display Order",
+      "uid": "display_order",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "number",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": 0
+    },
+    {
+      "display_name": "Is Featured",
+      "uid": "is_featured",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "boolean",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": false
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": false,
+    "title": "title",
+    "sub_title": [],
+    "url_pattern": "/case-studies/:title"
+  }
+}

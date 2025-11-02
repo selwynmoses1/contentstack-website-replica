@@ -1,0 +1,104 @@
+{
+  "title": "Platform Feature",
+  "uid": "platform_feature",
+  "schema": [
+    {
+      "display_name": "Title",
+      "uid": "title",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": true,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Description",
+      "uid": "description",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Feature Bullets",
+      "uid": "feature_bullets",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": true
+    },
+    {
+      "display_name": "CTA Link",
+      "uid": "cta_link",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "link",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "CTA Text",
+      "uid": "cta_text",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": "Learn More"
+    },
+    {
+      "display_name": "Background Gradient",
+      "uid": "background_gradient",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "text",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    },
+    {
+      "display_name": "Icon",
+      "uid": "icon",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "file",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false
+    },
+    {
+      "display_name": "Display Order",
+      "uid": "display_order",
+      "field_metadata": {
+        "_default": true
+      },
+      "data_type": "number",
+      "mandatory": false,
+      "unique": false,
+      "multiple": false,
+      "default_value": 0
+    }
+  ],
+  "options": {
+    "is_page": false,
+    "singleton": false,
+    "title": "title",
+    "sub_title": [],
+    "url_pattern": null
+  }
+}

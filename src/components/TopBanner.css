@@ -1,0 +1,43 @@
+.top-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 0;
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+}
+
+.top-banner-link {
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.top-banner-link:hover {
+  opacity: 0.8;
+}
+
+.arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.top-banner-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .top-banner {
+    padding: 10px 16px;
+  }
+  
+  .top-banner-link {
+    font-size: 12px;
+  }
+}
+
