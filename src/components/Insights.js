@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { getInsights } from '../services/contentstack';
+import { getInsights, onEntryChange } from '../services/contentstack';
 import './Insights.css';
 
 const Insights = () => {
@@ -55,6 +55,8 @@ const Insights = () => {
     };
 
     fetchInsights();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchInsights);
   }, []);
 
   const goToPrevious = () => {

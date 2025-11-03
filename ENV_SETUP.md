@@ -26,6 +26,19 @@ REACT_APP_CONTENTSTACK_ENVIRONMENT=production
 # Options: 'us', 'eu', 'azure-na', 'azure-eu'
 # Default: 'us'
 REACT_APP_CONTENTSTACK_REGION=us
+
+# Live Preview Configuration (Optional)
+# To enable Live Preview, uncomment and fill in these values:
+
+# Preview Token (required for Live Preview)
+# Generate this in: Settings > Tokens > Delivery Tokens > Create Preview Token
+# REACT_APP_CONTENTSTACK_PREVIEW_TOKEN=your_preview_token_here
+
+# Management Token (optional, for enhanced Live Preview features)
+# REACT_APP_CONTENTSTACK_MANAGEMENT_TOKEN=your_management_token_here
+
+# Preview Host (optional, defaults to 'rest-preview.contentstack.com')
+# REACT_APP_CONTENTSTACK_PREVIEW_HOST=rest-preview.contentstack.com
 ```
 
 ## How to Get Your Contentstack Credentials
@@ -47,6 +60,18 @@ REACT_APP_CONTENTSTACK_REGION=us
 4. **Region**:
    - Check your stack settings for the region
    - Common values: 'us', 'eu', 'azure-na', 'azure-eu'
+
+5. **Preview Token** (Optional - for Live Preview):
+   - Go to Settings > Tokens > Delivery Tokens
+   - Click on your delivery token or create a new one
+   - Click "Create Preview Token" to generate a preview token
+   - Copy the preview token
+   - This enables Live Preview functionality for real-time content updates
+
+6. **Management Token** (Optional - for enhanced Live Preview):
+   - Go to Settings > Tokens > Management Tokens
+   - Create a new management token or use an existing one
+   - This provides additional permissions for Live Preview features
 
 ## Important Notes
 

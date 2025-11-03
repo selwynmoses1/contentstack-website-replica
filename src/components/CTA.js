@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getCTASections } from '../services/contentstack';
+import { getCTASections, onEntryChange } from '../services/contentstack';
 import './CTA.css';
 
 const CTA = () => {
@@ -20,6 +20,8 @@ const CTA = () => {
     };
 
     fetchCTAs();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchCTAs);
   }, []);
 
   if (loading || ctaSections.length === 0) {

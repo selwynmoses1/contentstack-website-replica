@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import TopBanner from '../components/TopBanner';
 import Footer from '../components/Footer';
-import { getPlatformFeatures, getRoles, getCustomerStories, getCTASections } from '../services/contentstack';
+import { getPlatformFeatures, getRoles, getCustomerStories, getCTASections, onEntryChange } from '../services/contentstack';
 import './Platform.css';
 
 const Platform = () => {
@@ -100,6 +100,8 @@ const Platform = () => {
     };
 
     fetchData();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchData);
   }, []);
 
   return (

@@ -173,11 +173,29 @@ See `contentstack-schemas/COMPONENT_MAPPING.md` for detailed mapping between Con
 3. **Verify**: Check that content appears on your website
 4. **Customize**: Adjust component styling if needed for your content
 
+## Live Preview Integration
+
+Live Preview has been integrated to enable real-time content updates. See `LIVE_PREVIEW_SETUP.md` for detailed setup instructions.
+
+### Quick Setup for Live Preview:
+
+1. Generate a preview token in Contentstack (Settings > Tokens > Delivery Tokens)
+2. Add to `.env`:
+   ```env
+   REACT_APP_CONTENTSTACK_PREVIEW_TOKEN=your_preview_token
+   ```
+3. Enable Live Preview in Contentstack settings
+4. Set Base URLs for your environments
+5. Restart your development server
+
+All components automatically subscribe to Live Preview updates when enabled.
+
 ## Support
 
 - **Contentstack Documentation**: https://www.contentstack.com/docs/
 - **Contentstack Developer Hub**: https://www.contentstack.com/docs/developers/
 - **SDK Documentation**: https://www.contentstack.com/docs/developers/content-delivery-sdks/javascript-browser/
+- **Live Preview Documentation**: https://www.contentstack.com/docs/developers/set-up-live-preview/
 
 ## Notes
 
@@ -185,4 +203,5 @@ See `contentstack-schemas/COMPONENT_MAPPING.md` for detailed mapping between Con
 - Error handling is built into all data fetching functions
 - Loading states are shown while fetching data
 - The integration is non-breaking - your app will work even without Contentstack configured
+- Live Preview is optional - app works without it, but provides real-time updates when enabled
 

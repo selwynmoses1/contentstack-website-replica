@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getTopBanner } from '../services/contentstack';
+import { getTopBanner, onEntryChange } from '../services/contentstack';
 import './TopBanner.css';
 
 const TopBanner = () => {
@@ -20,6 +20,8 @@ const TopBanner = () => {
     };
 
     fetchBanner();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchBanner);
   }, []);
 
   if (loading || !banner) {

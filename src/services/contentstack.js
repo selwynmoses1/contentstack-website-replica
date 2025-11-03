@@ -1,12 +1,40 @@
 import Contentstack from 'contentstack';
+import ContentstackLivePreview from '@contentstack/live-preview-utils';
 
 // Initialize Contentstack Stack
 const Stack = Contentstack.Stack({
   api_key: process.env.REACT_APP_CONTENTSTACK_API_KEY,
   delivery_token: process.env.REACT_APP_CONTENTSTACK_DELIVERY_TOKEN,
   environment: process.env.REACT_APP_CONTENTSTACK_ENVIRONMENT || 'production',
-  region: process.env.REACT_APP_CONTENTSTACK_REGION || Contentstack.Region.US
+  region: process.env.REACT_APP_CONTENTSTACK_REGION || Contentstack.Region.US,
+  // Live Preview configuration (optional - only if preview token is provided)
+  ...(process.env.REACT_APP_CONTENTSTACK_PREVIEW_TOKEN && {
+    live_preview: {
+      enable: true,
+      preview_token: process.env.REACT_APP_CONTENTSTACK_PREVIEW_TOKEN,
+      management_token: process.env.REACT_APP_CONTENTSTACK_MANAGEMENT_TOKEN || '',
+      host: process.env.REACT_APP_CONTENTSTACK_PREVIEW_HOST || 'rest-preview.contentstack.com'
+    }
+  })
 });
+
+// Initialize Live Preview if preview token is available
+if (process.env.REACT_APP_CONTENTSTACK_PREVIEW_TOKEN) {
+  try {
+    ContentstackLivePreview.init({
+      stackSdk: Stack,
+      ssr: false // Client-side rendering
+    });
+    console.log('Contentstack Live Preview initialized');
+  } catch (error) {
+    console.warn('Failed to initialize Live Preview:', error);
+  }
+}
+
+// Export onEntryChange function for Live Preview
+export const onEntryChange = process.env.REACT_APP_CONTENTSTACK_PREVIEW_TOKEN
+  ? ContentstackLivePreview.onEntryChange
+  : () => {}; // No-op if Live Preview is not enabled
 
 // Helper function to get image URL from Contentstack asset
 const getImageUrl = (asset) => {
@@ -253,16 +281,23 @@ export const getCTASections = async (location = 'home') => {
   try {
     const query = Stack.ContentType('cta_section').Query();
     
-    if (location === 'home') {
-      query.in('section_location', ['home', 'both']);
-    } else if (location === 'platform') {
-      query.in('section_location', ['platform', 'both']);
-    }
-    
+    // Fetch all CTA sections and filter client-side
     const result = await query.toJSON().find();
     
     if (result && result.length > 0) {
-      return result.map(cta => ({
+      // Filter based on location
+      let filteredResults = result;
+      if (location === 'home') {
+        filteredResults = result.filter(cta => 
+          cta.section_location === 'home' || cta.section_location === 'both'
+        );
+      } else if (location === 'platform') {
+        filteredResults = result.filter(cta => 
+          cta.section_location === 'platform' || cta.section_location === 'both'
+        );
+      }
+      
+      return filteredResults.map(cta => ({
         sectionTitle: cta.section_title || '',
         title: cta.title || '',
         description: cta.description || '',

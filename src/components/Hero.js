@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiPause, FiPlay } from 'react-icons/fi';
-import { getHeroSlides } from '../services/contentstack';
+import { getHeroSlides, onEntryChange } from '../services/contentstack';
 import './Hero.css';
 
 const Hero = () => {
@@ -49,6 +49,8 @@ const Hero = () => {
     };
 
     fetchSlides();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchSlides);
   }, []);
 
   useEffect(() => {

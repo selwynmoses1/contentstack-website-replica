@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { getCustomerStories } from '../services/contentstack';
+import { getCustomerStories, onEntryChange } from '../services/contentstack';
 import './CustomerStories.css';
 
 const CustomerStories = () => {
@@ -55,6 +55,8 @@ const CustomerStories = () => {
     };
 
     fetchStories();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchStories);
   }, []);
 
   const goToPrevious = () => {

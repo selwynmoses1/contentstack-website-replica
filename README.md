@@ -17,8 +17,10 @@ A modern, interactive React.js replica of the Contentstack landing page with enh
 ## Tech Stack
 
 - **React 18** - Modern React with hooks
+- **Contentstack SDK** - Headless CMS integration
 - **Framer Motion** - Smooth animations and transitions
 - **React Icons** - Beautiful icon library
+- **React Router** - Client-side routing
 - **CSS3** - Modern styling with gradients and animations
 
 ## Getting Started
@@ -27,25 +29,68 @@ A modern, interactive React.js replica of the Contentstack landing page with enh
 
 - Node.js (v14 or higher)
 - npm or yarn
+- Contentstack account (optional - app works with fallback content if not configured)
 
-### Installation
+### Quick Start (Without Contentstack)
 
-1. Clone or navigate to this project directory:
+1. **Clone or navigate to this project directory:**
    ```bash
    cd "CS Website replica 2"
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. Start the development server:
+3. **Start the development server:**
    ```bash
    npm start
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+4. **Open your browser:**
+   - The app will automatically open at [http://localhost:3000](http://localhost:3000)
+   - Components will show fallback/default content if Contentstack is not configured
+
+### Setup with Contentstack (Recommended)
+
+To enable dynamic content from Contentstack:
+
+1. **Install dependencies** (if not already done):
+   ```bash
+   npm install
+   ```
+
+2. **Configure Environment Variables:**
+   
+   Create a `.env` file in the root directory:
+   ```env
+   REACT_APP_CONTENTSTACK_API_KEY=your_api_key_here
+   REACT_APP_CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token_here
+   REACT_APP_CONTENTSTACK_ENVIRONMENT=production
+   REACT_APP_CONTENTSTACK_REGION=us
+   ```
+   
+   See `ENV_SETUP.md` for detailed instructions on getting your credentials.
+
+3. **Import Content Types:**
+   - Content type schemas are in the `contentstack-schemas/` folder
+   - Import them into your Contentstack stack (see `contentstack-schemas/README.md`)
+
+4. **Create and Publish Content:**
+   - Create entries for each content type in Contentstack
+   - Publish them to your environment
+
+5. **Start the development server:**
+   ```bash
+   npm start
+   ```
+
+6. **Restart Required:**
+   - If you modify the `.env` file, you must restart the development server
+   - Stop the server (Ctrl+C) and run `npm start` again
+
+For detailed Contentstack integration instructions, see `CONTENTSTACK_INTEGRATION.md`.
 
 ### Build for Production
 

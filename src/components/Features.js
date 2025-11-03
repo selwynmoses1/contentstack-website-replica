@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getFeatures } from '../services/contentstack';
+import { getFeatures, onEntryChange } from '../services/contentstack';
 import './Features.css';
 
 const Features = () => {
@@ -65,6 +65,8 @@ const Features = () => {
     };
 
     fetchFeatures();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchFeatures);
   }, []);
 
   if (loading) {

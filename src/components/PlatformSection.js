@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getPlatformSection } from '../services/contentstack';
+import { getPlatformSection, onEntryChange } from '../services/contentstack';
 import './PlatformSection.css';
 
 const PlatformSection = () => {
@@ -20,6 +20,8 @@ const PlatformSection = () => {
     };
 
     fetchSection();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchSection);
   }, []);
 
   if (loading || !section) {

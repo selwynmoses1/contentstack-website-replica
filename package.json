@@ -4,6 +4,7 @@
   "description": "A modern React replica of Contentstack with enhanced features",
   "private": true,
   "dependencies": {
+    "@contentstack/live-preview-utils": "^4.1.1",
     "contentstack": "^3.26.2",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",

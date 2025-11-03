@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getCompanyLogos } from '../services/contentstack';
+import { getCompanyLogos, onEntryChange } from '../services/contentstack';
 import './CompanyLogos.css';
 
 const CompanyLogos = () => {
@@ -36,6 +36,8 @@ const CompanyLogos = () => {
     };
 
     fetchLogos();
+    // Subscribe to Live Preview updates
+    onEntryChange(fetchLogos);
   }, []);
 
   useEffect(() => {
