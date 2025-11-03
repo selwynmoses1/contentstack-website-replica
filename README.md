@@ -102,6 +102,24 @@ npm run build
 
 This creates an optimized production build in the `build` folder.
 
+### Deploy to Contentstack Launch
+
+To host your application on Contentstack Launch:
+
+1. **See Deployment Guide:**
+   - Detailed instructions: `CONTENTSTACK_LAUNCH_DEPLOYMENT.md`
+   - Includes prerequisites, step-by-step deployment, and troubleshooting
+
+2. **Quick Deployment Steps:**
+   - Push your code to GitHub (already done ✅)
+   - Access Contentstack Launch in your account
+   - Connect your GitHub repository
+   - Configure build settings (auto-detected for React)
+   - Add environment variables
+   - Deploy!
+
+See `CONTENTSTACK_LAUNCH_DEPLOYMENT.md` for complete deployment instructions.
+
 ## Project Structure
 
 ```

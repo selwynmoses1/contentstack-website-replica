@@ -1,0 +1,5 @@
+# Redirects for React Router (SPA routing)
+# This file ensures client-side routes work correctly on Contentstack Launch
+
+/*    /index.html   200
+
