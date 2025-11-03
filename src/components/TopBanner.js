@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getTopBanner } from '../services/contentstack';
 import './TopBanner.css';
 
 const TopBanner = () => {
+  const [banner, setBanner] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        const data = await getTopBanner();
+        setBanner(data);
+      } catch (error) {
+        console.error('Error loading top banner:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBanner();
+  }, []);
+
+  if (loading || !banner) {
+    return null;
+  }
+
   return (
     <div className="top-banner">
-      <Link to="/fall-product-update" className="top-banner-link">
-        <span>See what's new at our Fall Product Update — Live November 6</span>
+      <Link to={banner.linkUrl || '#'} className="top-banner-link">
+        <span>{banner.title}</span>
         <span className="arrow">→</span>
       </Link>
     </div>

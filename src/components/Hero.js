@@ -2,55 +2,75 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight, FiPause, FiPlay } from 'react-icons/fi';
+import { getHeroSlides } from '../services/contentstack';
 import './Hero.css';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-
-  const slides = [
-    {
-      title: 'The world\'s best digital experiences start here',
-      subtitle: 'Contentstack',
-      description: '',
-      cta: 'Product overview',
-      link: '/platform',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-    },
-    {
-      title: 'Unlock your future',
-      subtitle: 'Agent OS',
-      description: 'Seamlessly integrate intelligent agents, AI-powered automation and advanced workflows, all in one platform',
-      cta: 'Agent OS',
-      link: '/platforms/ai',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-    },
-    {
-      title: 'Welcome to the Context Economy',
-      subtitle: 'Personalization',
-      description: 'One-size-fits-all digital experiences are over. Adapting to customers in the moment is critical.',
-      cta: 'Join us',
-      link: '/blog/announcements/welcome-to-the-context-economy',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-    },
-    {
-      title: 'Modernize your CMS',
-      subtitle: 'Headless CMS',
-      description: 'Create experiences faster across more channels with an easy-to-use, future-ready platform',
-      cta: 'Explore the platform',
-      link: '/platforms/headless-cms',
-      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
-    }
-  ];
+  const [slides, setSlides] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isPaused) {
+    const fetchSlides = async () => {
+      try {
+        const data = await getHeroSlides();
+        if (data && data.length > 0) {
+          setSlides(data);
+        } else {
+          // Fallback to default slides if no data from Contentstack
+          setSlides([
+            {
+              title: 'The world\'s best digital experiences start here',
+              subtitle: 'Contentstack',
+              description: '',
+              cta: 'Product overview',
+              link: '/platform',
+              gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            }
+          ]);
+        }
+      } catch (error) {
+        console.error('Error loading hero slides:', error);
+        // Fallback to default slides on error
+        setSlides([
+          {
+            title: 'The world\'s best digital experiences start here',
+            subtitle: 'Contentstack',
+            description: '',
+            cta: 'Product overview',
+            link: '/platform',
+            gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+          }
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSlides();
+  }, []);
+
+  useEffect(() => {
+    if (!isPaused && slides.length > 0) {
       const timer = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
       }, 5000);
       return () => clearInterval(timer);
     }
   }, [isPaused, slides.length]);
+
+  if (loading || slides.length === 0) {
+    return (
+      <section className="hero">
+        <div className="hero-container">
+          <div className="hero-content">
+            <div className="hero-loading">Loading...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const goToSlide = (index) => {
     setCurrentSlide(index);

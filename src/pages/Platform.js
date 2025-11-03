@@ -1,108 +1,106 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import TopBanner from '../components/TopBanner';
 import Footer from '../components/Footer';
+import { getPlatformFeatures, getRoles, getCustomerStories, getCTASections } from '../services/contentstack';
 import './Platform.css';
 
 const Platform = () => {
-  const features = [
-    {
-      title: 'Omnichannel personalization',
-      description: 'Deliver content that dynamically adapts to your visitors, across every channel.',
-      bullets: [
-        'Use first-party data in real time',
-        'Experiment with A/B/n testing to find what works',
-        'Orchestrate audience journeys across all channels'
-      ],
-      link: '/platforms/omnichannel-personalization',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-    },
-    {
-      title: 'Headless content management',
-      description: "Bring flexibility, security and reliability to your content management with a system that's API-first and native to the cloud.",
-      bullets: [
-        'Make edits visually without code',
-        'Navigate content changes chronologically',
-        'Drag and drop components for simple building'
-      ],
-      link: '/platforms/headless-cms',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
-    },
-    {
-      title: 'Real-time data and insights',
-      description: 'Understand your customers to a greater level of precision and adapt in real time based on their behaviors.',
-      bullets: [
-        'Build dynamic profiles from multiple sources',
-        'Segment audiences automatically',
-        'Gain insights that help you make better decisions'
-      ],
-      link: '/platforms/real-time-cdp',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-    },
-    {
-      title: 'Front-end hosting',
-      description: 'Bring your content to life quickly and painlessly, on your terms, with MACH-compliant front-end hosting.',
-      bullets: [
-        'Work with your choice of tools and frameworks',
-        'Connect in just a few clicks',
-        'Run functions in the cloud or at the edge'
-      ],
-      link: '/platforms/launch',
-      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
-    },
-    {
-      title: 'Agents & Automations',
-      description: 'Leverage AI and powerful in-platform Agents across to automate and scale your content production.',
-      bullets: [
-        'Author on-brand content with LLMs',
-        'Build workflows that automate repetitive tasks',
-        'Generate reports and summaries for your team'
-      ],
-      link: '/platforms/ai',
-      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
-    }
-  ];
+  const [features, setFeatures] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [customerStories, setCustomerStories] = useState([]);
+  const [ctaSections, setCtaSections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const roles = [
-    {
-      title: 'Business users',
-      description: 'Uncover new efficiencies in your workflows so you do better work, faster.',
-      link: '/roles/business'
-    },
-    {
-      title: 'Developers & IT',
-      description: 'Break free from the monolith. Build how you want, with the tools you want.',
-      link: '/roles/developers'
-    },
-    {
-      title: 'Digital leaders',
-      description: 'Empower your teams to do better work and unlock the full potential of your brand, at any scale.',
-      link: '/roles/leaders'
-    }
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [featuresData, rolesData, storiesData, ctaData] = await Promise.all([
+          getPlatformFeatures(),
+          getRoles(),
+          getCustomerStories(),
+          getCTASections('platform')
+        ]);
 
-  const customerStories = [
-    {
-      company: 'Burberry',
-      metric: '80%',
-      metricLabel: 'Faster content publishing',
-      description: 'Read the full story',
-      link: '/case-studies/burberry'
-    },
-    {
-      company: 'Air France-KLM',
-      description: 'Air France-KLM streamlines content operations and omnichannel strategy on Contentstack',
-      link: '/case-studies/air-france-klm'
-    },
-    {
-      company: 'Land-O-Lakes',
-      metric: '38%',
-      metricLabel: 'Conversion rate',
-      description: 'Read the full story',
-      link: '/case-studies/land-o-lakes'
-    }
-  ];
+        if (featuresData && featuresData.length > 0) {
+          setFeatures(featuresData);
+        } else {
+          // Fallback to default features
+          setFeatures([
+            {
+              title: 'Omnichannel personalization',
+              description: 'Deliver content that dynamically adapts to your visitors, across every channel.',
+              bullets: [
+                'Use first-party data in real time',
+                'Experiment with A/B/n testing to find what works',
+                'Orchestrate audience journeys across all channels'
+              ],
+              link: '/platforms/omnichannel-personalization',
+              gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+            }
+          ]);
+        }
+
+        if (rolesData && rolesData.length > 0) {
+          setRoles(rolesData);
+        } else {
+          // Fallback to default roles
+          setRoles([
+            {
+              title: 'Business users',
+              description: 'Uncover new efficiencies in your workflows so you do better work, faster.',
+              link: '/roles/business'
+            }
+          ]);
+        }
+
+        if (storiesData && storiesData.length > 0) {
+          // Transform stories to match component structure
+          setCustomerStories(storiesData.map(story => ({
+            company: story.companyName || story.title,
+            metric: story.metricValue,
+            metricLabel: story.metricLabel,
+            description: story.description || 'Read the full story',
+            link: story.link
+          })));
+        } else {
+          // Fallback to default stories
+          setCustomerStories([
+            {
+              company: 'Burberry',
+              metric: '80%',
+              metricLabel: 'Faster content publishing',
+              description: 'Read the full story',
+              link: '/case-studies/burberry'
+            }
+          ]);
+        }
+
+        setCtaSections(ctaData || []);
+      } catch (error) {
+        console.error('Error loading platform data:', error);
+        // Set fallback data on error
+        setFeatures([{
+          title: 'Omnichannel personalization',
+          description: 'Deliver content that dynamically adapts to your visitors, across every channel.',
+          bullets: [],
+          link: '/platforms/omnichannel-personalization',
+          gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        }]);
+        setRoles([{
+          title: 'Business users',
+          description: 'Uncover new efficiencies in your workflows so you do better work, faster.',
+          link: '/roles/business'
+        }]);
+        setCustomerStories([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -132,26 +130,32 @@ const Platform = () => {
 
       {/* Features Grid */}
       <section className="platform-features">
-        <div className="platform-features-container">
+          <div className="platform-features-container">
           {features.map((feature, index) => (
             <div key={index} className="platform-feature-card">
               <div 
                 className="platform-feature-icon" 
-                style={{ background: feature.gradient }}
+                style={{ background: feature.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
               >
                 <div className="platform-feature-icon-content">
-                  {feature.title.charAt(0)}
+                  {feature.icon ? (
+                    <img src={feature.icon} alt={feature.title} />
+                  ) : (
+                    feature.title.charAt(0)
+                  )}
                 </div>
               </div>
               <h2 className="platform-feature-title">{feature.title}</h2>
               <p className="platform-feature-description">{feature.description}</p>
-              <ul className="platform-feature-bullets">
-                {feature.bullets.map((bullet, bulletIndex) => (
-                  <li key={bulletIndex}>{bullet}</li>
-                ))}
-              </ul>
-              <Link to={feature.link} className="platform-feature-link">
-                Learn More →
+              {feature.bullets && feature.bullets.length > 0 && (
+                <ul className="platform-feature-bullets">
+                  {feature.bullets.map((bullet, bulletIndex) => (
+                    <li key={bulletIndex}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+              <Link to={feature.link || '#'} className="platform-feature-link">
+                {feature.cta || 'Learn More'} →
               </Link>
             </div>
           ))}
@@ -167,8 +171,8 @@ const Platform = () => {
               <div key={index} className="platform-role-card">
                 <h3 className="platform-role-title">{role.title}</h3>
                 <p className="platform-role-description">{role.description}</p>
-                <Link to={role.link} className="platform-role-link">
-                  Learn more →
+                <Link to={role.link || '#'} className="platform-role-link">
+                  {role.cta || 'Learn more'} →
                 </Link>
               </div>
             ))}
@@ -183,21 +187,31 @@ const Platform = () => {
             These companies run on Contentstack Edge
           </h2>
           <div className="platform-customers-grid">
-            {customerStories.map((story, index) => (
-              <div key={index} className="platform-customer-card">
-                {story.metric && (
-                  <div className="platform-customer-metric">
-                    <span className="platform-customer-metric-value">{story.metric}</span>
-                    <span className="platform-customer-metric-label">{story.metricLabel}</span>
-                  </div>
-                )}
-                <h3 className="platform-customer-company">{story.company}</h3>
-                <p className="platform-customer-description">{story.description}</p>
-                <Link to={story.link} className="platform-customer-link">
-                  Read the full story →
-                </Link>
-              </div>
-            ))}
+            {customerStories.length > 0 ? (
+              customerStories.map((story, index) => (
+                <div key={index} className="platform-customer-card">
+                  {story.metric && (
+                    <div className="platform-customer-metric">
+                      <span className="platform-customer-metric-value">{story.metric}</span>
+                      {story.metricLabel && (
+                        <span className="platform-customer-metric-label">{story.metricLabel}</span>
+                      )}
+                    </div>
+                  )}
+                  <h3 className="platform-customer-company">{story.company}</h3>
+                  {story.description && (
+                    <p className="platform-customer-description">{story.description}</p>
+                  )}
+                  {story.link && (
+                    <Link to={story.link} className="platform-customer-link">
+                      Read the full story →
+                    </Link>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className="platform-customers-empty">Loading customer stories...</div>
+            )}
           </div>
         </div>
       </section>
@@ -220,13 +234,38 @@ const Platform = () => {
       {/* CTA Section */}
       <section className="platform-cta-section">
         <div className="platform-cta-container">
-          <h2 className="platform-cta-title">Ready to reimagine possible?</h2>
-          <p className="platform-cta-description">
-            Learn more about Contentstack Edge, the adaptive experience platform that powers real-time, omnichannel personalization.
-          </p>
-          <Link to="/request-demo" className="btn-primary">
-            Request a demo
-          </Link>
+          {ctaSections.length > 0 ? (
+            ctaSections.map((cta, index) => (
+              <div key={index}>
+                {cta.title && <h2 className="platform-cta-title">{cta.title}</h2>}
+                {cta.description && (
+                  <p className="platform-cta-description">{cta.description}</p>
+                )}
+                <div className="platform-cta-buttons">
+                  {cta.primaryCta && (
+                    <Link to={cta.primaryCta.link || '/request-demo'} className="btn-primary">
+                      {cta.primaryCta.text || 'Request a demo'}
+                    </Link>
+                  )}
+                  {cta.secondaryCta && (
+                    <Link to={cta.secondaryCta.link || '#'} className="btn-secondary">
+                      {cta.secondaryCta.text}
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <h2 className="platform-cta-title">Ready to reimagine possible?</h2>
+              <p className="platform-cta-description">
+                Learn more about Contentstack Edge, the adaptive experience platform that powers real-time, omnichannel personalization.
+              </p>
+              <Link to="/request-demo" className="btn-primary">
+                Request a demo
+              </Link>
+            </>
+          )}
         </div>
       </section>
 
